@@ -1,0 +1,15 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [Tier_Rank]
+      ,[Tier]
+      ,[Tier_Type]
+      ,[Point_Threshold]
+      ,[Point_Type]
+  FROM [RequalDB].[dbo].[R_Club_Tiers]
+
+SELECT TOP (1000) [Tier_Rank]
+      ,[Tier]
+      ,[Tier_Type]
+      ,[Point_Threshold]
+      ,[Point_Type]
+      ,[Upgrade_Tier]
+  FROM [RequalDB].[dbo].[R_Club_Tiers_NEW]
