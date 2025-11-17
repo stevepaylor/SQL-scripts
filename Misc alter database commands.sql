@@ -1,0 +1,36 @@
+USE [master];
+GO
+
+--------------ALTER DATABASE [CMKTDB_ARCHIVE] MODIFY FILE ( NAME = CMKTDB_Archive_Data, NEWNAME = CMKTDB_Archive_Old_Data );
+--------------GO
+
+--------------ALTER DATABASE [CMKTDB_ARCHIVE] MODIFY FILE ( NAME = CMKTDB_Archive_Log, NEWNAME = CMKTDB_Archive_Old_Log );
+--------------GO
+
+----Disconnect all existing session.
+ALTER DATABASE [CMKTDB_ARCHIVE] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+GO
+
+--Change database in to OFFLINE mode.
+ALTER DATABASE [CMKTDB_ARCHIVE] SET OFFLINE
+
+ALTER DATABASE [CMKTDB_ARCHIVE]
+Modify Name = [CMKTDB_ARCHIVE_OLD] ;
+GO
+
+--********** rename the physical files and move data file to J-drive 
+
+--ALTER DATABASE CMKTDB_ARCHIVE MODIFY FILE (Name=CMKTDB_Archive_Old_Data, FILENAME='J:\UserDBdata\CMKTDB_ARCHIVE_OLD_data.mdf')
+--GO
+
+ALTER DATABASE CMKTDB_ARCHIVE MODIFY FILE (Name=CMKTDB_ARCHIVE_Old_Log, FILENAME='L:\UserDBlog\CMKTDB_ARCHIVE_OLD_log.ldf')
+GO
+
+ALTER DATABASE [CMKTDB_ARCHIVE] SET ONLINE
+Go
+ALTER DATABASE [CMKTDB_ARCHIVE_OLD] SET MULTI_USER
+Go
+
+-- Rename database to CMKTDB_ARCHIVE_OLD
+
+

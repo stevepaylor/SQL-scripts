@@ -1,0 +1,2 @@
+ALTER DATABASE model MODIFY FILE ( NAME = modeldev , FILENAME = 'E:\SQL_Data_Log_Files\system\model.mdf' ) 
+ALTER DATABASE model MODIFY FILE ( NAME = modellog , FILENAME = 'E:\SQL_Data_Log_Files\system\modellog.ldf )
