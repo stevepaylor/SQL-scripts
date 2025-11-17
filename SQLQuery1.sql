@@ -1,0 +1,1 @@
+ALTER INDEX [PK_t_Transaction] ON [dbo].[t_Transaction] REBUILD WITH (SORT_IN_TEMPDB = ON, ONLINE = ON, MAXDOP = 0, RESUMABLE = OFF) 

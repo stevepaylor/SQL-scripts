@@ -1,0 +1,21 @@
+
+USE master;
+GO
+
+ALTER DATABASE [GP.Reporting]
+SET SINGLE_USER
+WITH ROLLBACK IMMEDIATE;
+GO
+
+USE [GP.Reporting]
+GO
+DBCC SHRINKFILE (N'GP.Reporting_log' , 0, TRUNCATEONLY)
+GO
+
+
+USE master;
+GO
+
+ALTER DATABASE [GP.Reporting]
+SET MULTI_USER;
+GO
