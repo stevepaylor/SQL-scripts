@@ -1,0 +1,1 @@
+exec dbo.p_mtl_summary_report_disp @gaming_day='2016-12-25 00:00:00',@location_type_id=-1,@location_type_nm=NULL
