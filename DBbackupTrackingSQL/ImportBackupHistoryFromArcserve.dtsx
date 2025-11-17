@@ -1,0 +1,552 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/20/2021 3:00:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ITD016TW"
+  DTS:CreatorName="VIEJAS\spaylor"
+  DTS:Description="Imports Excel Spreadsheet loaded from a query in Arcserve"
+  DTS:DTSID="{F97D8362-C7F3-4F7D-88F5-F19B5B0688F0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.168"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="ImportBackupHistoryFromArcserve"
+  DTS:VersionGUID="{6AD1966F-41ED-43BE-828C-1713B61EA2FD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C7A4373B-04AD-4B04-B921-FC3EDD937AA9}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ITD016TW;Initial Catalog=DBAManager;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{2F7FB6C7-5F6E-4A08-88F3-FBDEA3512C09}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Arcserver\List of BAK Files Backed up  from DBAMBK01pr All Folders.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{7C258466-18D5-4221-9A27-86F1D541C431}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - ArcserveBackupHistoryInput"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ArcserveBackupHistoryInput]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].Columns[Size]"
+                      cachedDataType="r8"
+                      cachedName="Size"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Size]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Size]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].Columns[Date]"
+                      cachedDataType="date"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].Columns[Session No#]"
+                      cachedDataType="r8"
+                      cachedName="Session No#"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Session No#]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Session No#]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].Columns[Media Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Media Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Media Name]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Media Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].Columns[Sequence No#]"
+                      cachedDataType="r8"
+                      cachedName="Sequence No#"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Sequence No#]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Sequence No#]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].Columns[Serial No#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Serial No#"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Serial No#]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Serial No#]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].Columns[Path]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Path"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Path]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Path]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Size]"
+                      dataType="r8"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Date]"
+                      dataType="date"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Session No#]"
+                      dataType="r8"
+                      name="Session No#" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Media Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Media Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Sequence No#]"
+                      dataType="r8"
+                      name="Sequence No#" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Serial No#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Serial No#" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input].ExternalColumns[Path]"
+                      dataType="wstr"
+                      length="255"
+                      name="Path" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Sheet2$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - Sheet2$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet2$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Sheet2$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Size]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Size]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Size]"
+                      name="Size"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Session No#]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Session No#]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Session No#]"
+                      name="Session No#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Media Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Media Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Media Name]"
+                      name="Media Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Sequence No#]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Sequence No#]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Sequence No#]"
+                      name="Sequence No#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Serial No#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Serial No#]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Serial No#]"
+                      name="Serial No#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Path]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Path]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].Columns[Path]"
+                      name="Path"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Size]"
+                      dataType="r8"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      dataType="date"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Session No#]"
+                      dataType="r8"
+                      name="Session No#" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Media Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Media Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Sequence No#]"
+                      dataType="r8"
+                      name="Sequence No#" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Serial No#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Serial No#" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output].ExternalColumns[Path]"
+                      dataType="wstr"
+                      length="255"
+                      name="Path" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Size]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Size]"
+                      name="Size" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Session No#]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Session No#]"
+                      name="Session No#" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Media Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Media Name]"
+                      name="Media Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Sequence No#]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Sequence No#]"
+                      name="Sequence No#" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Serial No#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Serial No#]"
+                      name="Serial No#" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Path]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[Path]"
+                      name="Path" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task 1\Destination - ArcserveBackupHistoryInput.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source - Sheet2$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Drop table(s) SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{42759B5D-67C2-4E51-9B4B-C26ACDA0E253}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop table(s) SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C7A4373B-04AD-4B04-B921-FC3EDD937AA9}"
+          SQLTask:SqlStatementSource="drop table [ArcserveBackupHistoryInput]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{03652D90-E802-48E7-85BC-C3F81F7EF39F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C7A4373B-04AD-4B04-B921-FC3EDD937AA9}"
+          SQLTask:SqlStatementSource="CREATE TABLE [ArcserveBackupHistoryInput] (&#xA;[Name] nvarchar(255),&#xA;[Size] float,&#xA;[Date] datetime,&#xA;[Session No#] float,&#xA;[Media Name] nvarchar(255),&#xA;[Sequence No#] float,&#xA;[Serial No#] nvarchar(255),&#xA;[Path] nvarchar(255)&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{68FAA2EA-F0E1-4D70-B498-3F11C85C3EA4\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{68FAA2EA-F0E1-4D70-B498-3F11C85C3EA4}"
+      DTS:From="Package\Drop table(s) SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{68FAA2EA-F0E1-4D70-B498-3F11C85C3EA4}"
+      DTS:To="Package\Preparation SQL Task 1"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{E0CC4BF7-D00D-4EB8-AB84-1070AF96481A\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{E0CC4BF7-D00D-4EB8-AB84-1070AF96481A}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{E0CC4BF7-D00D-4EB8-AB84-1070AF96481A}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

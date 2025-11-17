@@ -1,0 +1,21 @@
+sp_configure 'show advanced options', 1;  
+GO  
+RECONFIGURE;  
+GO  
+sp_configure 'Database Mail XPs', 1;  
+GO  
+RECONFIGURE  
+GO
+
+IF EXISTS (
+    SELECT 1 FROM sys.configurations 
+    WHERE NAME = 'Database Mail XPs' AND VALUE = 0)
+BEGIN
+  PRINT 'Enabling Database Mail XPs'
+  EXEC sp_configure 'show advanced options', 1;  
+  RECONFIGURE
+  EXEC sp_configure 'Database Mail XPs', 1;  
+  RECONFIGURE  
+END
+
+EXEC msdb.dbo.sysmail_help_queue_sp @queue_type = 'Mail';

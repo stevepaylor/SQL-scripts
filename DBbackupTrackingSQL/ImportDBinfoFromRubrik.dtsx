@@ -1,0 +1,801 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/14/2021 3:12:26 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ITD016TW"
+  DTS:CreatorName="VIEJAS\spaylor"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{1C566C9C-57EB-4260-89E3-5E7C8228867B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.168"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="ImportDBinfoFromRubrik"
+  DTS:VersionGUID="{11843DCA-0335-4EBC-972A-BFBB77B3F3B8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{44B8A439-34C6-40C3-AF65-7933485F9B87}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ITD016TW;Initial Catalog=DBAManager;Provider=SQLOLEDB;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{5DC8F62F-313D-42C1-9605-06DE4A75FBC0}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Rubrik_DB_Backup\RubrikDatabases.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{037D919D-AAC7-484B-A398-5CEE4E42B703}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - RubrikDatabases"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - RubrikDatabases"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[RubrikDatabases]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[DatabaseName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DatabaseName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[DatabaseName]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[DatabaseName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[HostName]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[Location]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[InstanceName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstanceName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[InstanceName]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[InstanceName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[LiveMount]"
+                      cachedDataType="bool"
+                      cachedName="LiveMount"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[LiveMount]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[LiveMount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[Relic]"
+                      cachedDataType="bool"
+                      cachedName="Relic"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[Relic]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[Relic]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[LastBackup]"
+                      cachedDataType="date"
+                      cachedName="LastBackup"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[LastBackup]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[LastBackup]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[recoveryModel]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="recoveryModel"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[recoveryModel]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[recoveryModel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[effectiveSlaDomainName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="effectiveSlaDomainName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[RubrikSLA]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[effectiveSlaDomainName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].Columns[CheckDate]"
+                      cachedDataType="date"
+                      cachedName="CheckDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[CheckDate]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[CheckDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[DatabaseName]"
+                      dataType="wstr"
+                      length="255"
+                      name="DatabaseName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[HostName]"
+                      dataType="wstr"
+                      length="255"
+                      name="HostName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[InstanceName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstanceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[LiveMount]"
+                      dataType="bool"
+                      name="LiveMount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[Relic]"
+                      dataType="bool"
+                      name="Relic" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[LastBackup]"
+                      dataType="date"
+                      name="LastBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[recoveryModel]"
+                      dataType="wstr"
+                      length="255"
+                      name="recoveryModel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[RubrikSLA]"
+                      dataType="wstr"
+                      length="255"
+                      name="RubrikSLA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input].ExternalColumns[CheckDate]"
+                      dataType="date"
+                      name="CheckDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - RubrikDatabases.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - RubrikDatabases.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - RubrikDatabases.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - RubrikDatabases_202112141357_al$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">RubrikDatabases_202112141357_al$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[DatabaseName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[DatabaseName]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[DatabaseName]"
+                      name="DatabaseName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[RootType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[RootType]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[RootType]"
+                      name="RootType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[InstanceName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[InstanceName]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[InstanceName]"
+                      name="InstanceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[LiveMount]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[LiveMount]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[LiveMount]"
+                      name="LiveMount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[Relic]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[Relic]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[Relic]"
+                      name="Relic"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[LastBackup]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[LastBackup]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[LastBackup]"
+                      name="LastBackup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[ComplianceCheck]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[ComplianceCheck]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[ComplianceCheck]"
+                      name="ComplianceCheck"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[slaAssignment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[slaAssignment]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[slaAssignment]"
+                      name="slaAssignment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[configuredSlaDomainName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[configuredSlaDomainName]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[configuredSlaDomainName]"
+                      name="configuredSlaDomainName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[copyOnly]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[copyOnly]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[copyOnly]"
+                      name="copyOnly"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[recoveryModel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[recoveryModel]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[recoveryModel]"
+                      name="recoveryModel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[effectiveSlaDomainName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[effectiveSlaDomainName]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[effectiveSlaDomainName]"
+                      name="effectiveSlaDomainName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[isLogShippingSecondary]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[isLogShippingSecondary]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[isLogShippingSecondary]"
+                      name="isLogShippingSecondary"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[CheckDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[CheckDate]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[CheckDate]"
+                      name="CheckDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[ComplianceMinutes]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[ComplianceMinutes]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[ComplianceMinutes]"
+                      name="ComplianceMinutes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[WarningMinutes]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[WarningMinutes]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[WarningMinutes]"
+                      name="WarningMinutes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[PSComputerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[PSComputerName]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[PSComputerName]"
+                      name="PSComputerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[RunspaceId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[RunspaceId]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[RunspaceId]"
+                      name="RunspaceId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[PSShowComputerName]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[PSShowComputerName]"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].Columns[PSShowComputerName]"
+                      name="PSShowComputerName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[DatabaseName]"
+                      dataType="wstr"
+                      length="255"
+                      name="DatabaseName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[RootType]"
+                      dataType="wstr"
+                      length="255"
+                      name="RootType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[InstanceName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstanceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[LiveMount]"
+                      dataType="bool"
+                      name="LiveMount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[Relic]"
+                      dataType="bool"
+                      name="Relic" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[LastBackup]"
+                      dataType="date"
+                      name="LastBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[ComplianceCheck]"
+                      dataType="wstr"
+                      length="255"
+                      name="ComplianceCheck" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[slaAssignment]"
+                      dataType="wstr"
+                      length="255"
+                      name="slaAssignment" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[configuredSlaDomainName]"
+                      dataType="wstr"
+                      length="255"
+                      name="configuredSlaDomainName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[copyOnly]"
+                      dataType="bool"
+                      name="copyOnly" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[recoveryModel]"
+                      dataType="wstr"
+                      length="255"
+                      name="recoveryModel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[effectiveSlaDomainName]"
+                      dataType="wstr"
+                      length="255"
+                      name="effectiveSlaDomainName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[isLogShippingSecondary]"
+                      dataType="bool"
+                      name="isLogShippingSecondary" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[CheckDate]"
+                      dataType="date"
+                      name="CheckDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[ComplianceMinutes]"
+                      dataType="r8"
+                      name="ComplianceMinutes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[WarningMinutes]"
+                      dataType="r8"
+                      name="WarningMinutes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[PSComputerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="PSComputerName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[RunspaceId]"
+                      dataType="wstr"
+                      length="255"
+                      name="RunspaceId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output].ExternalColumns[PSShowComputerName]"
+                      dataType="bool"
+                      name="PSShowComputerName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[DatabaseName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[DatabaseName]"
+                      name="DatabaseName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[RootType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[RootType]"
+                      name="RootType" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[InstanceName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[InstanceName]"
+                      name="InstanceName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[LiveMount]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[LiveMount]"
+                      name="LiveMount" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[Relic]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[Relic]"
+                      name="Relic" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[LastBackup]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[LastBackup]"
+                      name="LastBackup" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[ComplianceCheck]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[ComplianceCheck]"
+                      name="ComplianceCheck" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[slaAssignment]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[slaAssignment]"
+                      name="slaAssignment" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[configuredSlaDomainName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[configuredSlaDomainName]"
+                      name="configuredSlaDomainName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[copyOnly]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[copyOnly]"
+                      name="copyOnly" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[recoveryModel]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[recoveryModel]"
+                      name="recoveryModel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[effectiveSlaDomainName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[effectiveSlaDomainName]"
+                      name="effectiveSlaDomainName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[isLogShippingSecondary]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[isLogShippingSecondary]"
+                      name="isLogShippingSecondary" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[CheckDate]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[CheckDate]"
+                      name="CheckDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[ComplianceMinutes]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[ComplianceMinutes]"
+                      name="ComplianceMinutes" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[WarningMinutes]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[WarningMinutes]"
+                      name="WarningMinutes" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[PSComputerName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[PSComputerName]"
+                      name="PSComputerName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[RunspaceId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[RunspaceId]"
+                      name="RunspaceId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[PSShowComputerName]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[PSShowComputerName]"
+                      name="PSShowComputerName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task 1\Destination - RubrikDatabases.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source - RubrikDatabases_202112141357_al$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Drop table(s) SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{223D95AB-23B2-4F8B-907B-DEE4EAFEA608}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop table(s) SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{44B8A439-34C6-40C3-AF65-7933485F9B87}"
+          SQLTask:SqlStatementSource="drop table [dbo].[RubrikDatabases]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{7770A5F5-1BB1-40EB-ABB1-01D8649E87A6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{44B8A439-34C6-40C3-AF65-7933485F9B87}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[RubrikDatabases] (&#xA;[DatabaseName] nvarchar(255),&#xA;[HostName] nvarchar(255),&#xA;[InstanceName] nvarchar(255),&#xA;[LiveMount] bit NOT NULL,&#xA;[Relic] bit NOT NULL,&#xA;[LastBackup] datetime,&#xA;[recoveryModel] nvarchar(255),&#xA;[RubrikSLA] nvarchar(255),&#xA;[CheckDate] datetime&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{A6933F3E-9169-4B8E-BCF5-3852AEBF4EFA\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{A6933F3E-9169-4B8E-BCF5-3852AEBF4EFA}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{A6933F3E-9169-4B8E-BCF5-3852AEBF4EFA}"
+      DTS:To="Package\Data Flow Task 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{E937C489-50C5-4519-9B3C-DE46760DB218\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{E937C489-50C5-4519-9B3C-DE46760DB218}"
+      DTS:From="Package\Drop table(s) SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{E937C489-50C5-4519-9B3C-DE46760DB218}"
+      DTS:To="Package\Preparation SQL Task 1"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

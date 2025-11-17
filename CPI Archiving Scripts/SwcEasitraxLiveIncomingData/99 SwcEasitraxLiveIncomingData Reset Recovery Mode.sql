@@ -1,0 +1,3 @@
+ALTER DATABASE SwcEasitraxLiveIncomingData
+SET RECOVERY FULL
+GO

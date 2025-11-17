@@ -1,0 +1,2 @@
+DBCC SHRINKDATABASE (Watson)
+GO
