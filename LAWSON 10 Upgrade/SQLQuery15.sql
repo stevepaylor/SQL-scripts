@@ -1,0 +1,1 @@
+DENY SELECT ON [lawson].[PAYDEDUCTN]  TO [SAFE_db_datareader] 
