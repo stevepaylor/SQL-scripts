@@ -1,0 +1,1 @@
+EXEC sp_recompile 'spAccum1TripGet'
