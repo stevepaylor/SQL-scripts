@@ -1,0 +1,1 @@
+exec CMPAPI.dbo.p_GetPlayersForReconcileToCMP;1 @cmp_loc1='TABL',@cmp_loc2=NULL,@gaming_day='2016-06-21 12:44:47.903'

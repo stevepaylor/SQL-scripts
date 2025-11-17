@@ -1,0 +1,1 @@
+select *  FROM dbo.tPlayerCreditAndCollection tr(NOLOCK)  where TranCodeID = 54

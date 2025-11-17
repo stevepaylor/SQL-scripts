@@ -1,0 +1,44 @@
+USE [CMP13]
+GO
+
+--/****** Object:  Index [PK_tPlayerPromo1]    Script Date: 8/3/2016 3:54:37 PM ******/
+--ALTER TABLE [dbo].[tPlayerPromo1] ADD  CONSTRAINT [PK_tPlayerPromo1] PRIMARY KEY CLUSTERED 
+--(
+--	[TranId] ASC,
+--	[BucketGroupId] ASC,
+--	[GamingDt] ASC
+--)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+--GO
+
+
+--USE [CMP13]
+--GO
+
+--/****** Object:  Index [IDX_tPlayerPromo1_PLAYERID]    Script Date: 8/3/2016 3:55:46 PM ******/
+--CREATE NONCLUSTERED INDEX [IDX_tPlayerPromo1_PLAYERID] ON [dbo].[tPlayerPromo1]
+--(
+--	[PlayerId] ASC
+--)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+--GO
+
+USE [CMP13]
+GO
+
+
+CREATE NONCLUSTERED INDEX [IDX_tPlayerPromo1_TranId_Covered] ON [dbo].[tPlayerPromo1]
+(
+	[TranId] ASC
+)
+INCLUDE ([BonusPromo1],[AdjPromo1Dr],[AdjPromo1Cr],[Promo1],[Promo2Used],[ExpirePromo1])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+
+CREATE NONCLUSTERED INDEX [IDX_tPlayerPromo2_TranId_Covered] ON [dbo].[tPlayerPromo2]
+(
+	[TranId] ASC
+)
+INCLUDE ([AdjPromo2Dr],[Promo2Used])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+

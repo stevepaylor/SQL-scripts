@@ -1,0 +1,345 @@
+------------------------------------------------
+---- CMKTCRYPTO
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMKTCRYPTO_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMKTCRYPTO_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMKTCRYPTO'  TO N'H:\UserDBdata\CMKTCRYPTO_PreUpgrade_data.mdf'
+--, MOVE N'CMKTCRYPTO_Log'   TO N'H:\UserDBlog\CMKTCRYPTO_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMKTCRYPTO_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMKTCRYPTO_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMKTCRYPTO'  TO N'H:\UserDBdata\CMKTCRYPTO_PreUpgrade_data.mdf'
+--, MOVE N'CMKTCRYPTO_Log'   TO N'H:\UserDBlog\CMKTCRYPTO_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+------------------------------------------------
+---- CMP_RATING
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMP_RATING_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMP_RATING_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMP_RATING'  TO N'H:\UserDBdata\CMP_RATING_PreUpgrade_data.mdf'
+--, MOVE N'CMP_RATING_Log'   TO N'H:\UserDBlog\CMP_RATING_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMP_RATING_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMP_RATING_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMP_RATING'  TO N'H:\UserDBdata\CMP_RATING_PreUpgrade_data.mdf'
+--, MOVE N'CMP_RATING_Log'   TO N'H:\UserDBlog\CMP_RATING_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+----------------------------------------------------
+-------- CMP13
+----------------------------------------------------
+------USE [master]
+------RESTORE DATABASE CMP13_PreUpgrade
+------FROM DISK = N'J:\_PreUpgrade_Backups\CMP13_FULL.bak' 
+------WITH  
+------  FILE = 1
+------, MOVE N'CMKTDB13_Data'  TO N'H:\UserDBdata\CMP13_PreUpgrade_data.mdf'
+------, MOVE N'CMKTDB13_Data2' TO N'H:\UserDBdata\CMP13_PreUpgrade_data2.ndf'
+------, MOVE N'CMKTDB13_Log'   TO N'H:\UserDBlog\CMP13_PreUpgrade_log.ldf'
+------, NOUNLOAD
+--------, REPLACE
+------, NORECOVERY
+------, STATS = 5
+------GO
+
+------USE [master]
+------RESTORE DATABASE CMP13_PreUpgrade
+------FROM DISK = N'J:\_PreUpgrade_Backups\CMP13_DIFF.bak' 
+------WITH  
+------  FILE = 1
+------, MOVE N'CMKTDB13_Data'  TO N'H:\UserDBdata\CMP13_PreUpgrade_data.mdf'
+------, MOVE N'CMKTDB13_Data2' TO N'H:\UserDBdata\CMP13_PreUpgrade_data2.ndf'
+------, MOVE N'CMKTDB13_Log'   TO N'H:\UserDBlog\CMP13_PreUpgrade_log.ldf'
+------, NOUNLOAD
+------, RECOVERY
+------, STATS = 5
+------GO
+
+------------------------------------------------
+---- CMPAPI
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMPAPI_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMPAPI_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMPAPI'  TO N'H:\UserDBdata\CMPAPI_PreUpgrade_data.mdf'
+--, MOVE N'CMPAPI_Log'   TO N'H:\UserDBlog\CMPAPI_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMPAPI_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMPAPI_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMPAPI'  TO N'H:\UserDBdata\CMPAPI_PreUpgrade_data.mdf'
+--, MOVE N'CMPAPI_Log'   TO N'H:\UserDBlog\CMPAPI_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+------------------------------------------------
+---- CMPSDS
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMPSDS_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMPSDS_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMPSDS_data'  TO N'H:\UserDBdata\CMPSDS_PreUpgrade_data.mdf'
+--, MOVE N'CMPSDS_log'   TO N'H:\UserDBlog\CMPSDS_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMPSDS_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMPSDS_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMPSDS_data'  TO N'H:\UserDBdata\CMPSDS_PreUpgrade_data.mdf'
+--, MOVE N'CMPSDS_log'   TO N'H:\UserDBlog\CMPSDS_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+------------------------------------------------
+---- dbInfogenesis
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE dbInfogenesis_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\dbInfogenesis_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'dbInfogenesis_data'  TO N'H:\UserDBdata\dbInfogenesis_PreUpgrade_data.mdf'
+--, MOVE N'dbInfogenesis_log'   TO N'H:\UserDBlog\dbInfogenesis_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE dbInfogenesis_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\dbInfogenesis_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'dbInfogenesis_data'  TO N'H:\UserDBdata\dbInfogenesis_PreUpgrade_data.mdf'
+--, MOVE N'dbInfogenesis_log'   TO N'H:\UserDBlog\dbInfogenesis_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+------------------------------------------------
+---- PKMS_OBJ
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE PKMS_OBJ_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\PKMS_OBJ_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'PKMS_OBJ'  TO N'H:\UserDBdata\PKMS_OBJ_PreUpgrade_data.mdf'
+--, MOVE N'PKMS_OBJ_log'   TO N'H:\UserDBlog\PKMS_OBJ_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE PKMS_OBJ_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\PKMS_OBJ_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'PKMS_OBJ'  TO N'H:\UserDBdata\PKMS_OBJ_PreUpgrade_data.mdf'
+--, MOVE N'PKMS_OBJ_log'   TO N'H:\UserDBlog\PKMS_OBJ_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- PrintManager
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE PrintManager_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\PrintManager_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'PrintManager_data'  TO N'H:\UserDBdata\PrintManager_PreUpgrade_data.mdf'
+--, MOVE N'PrintManager_log'   TO N'H:\UserDBlog\PrintManager_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE PrintManager_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\PrintManager_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'PrintManager_data'  TO N'H:\UserDBdata\PrintManager_PreUpgrade_data.mdf'
+--, MOVE N'PrintManager_log'   TO N'H:\UserDBlog\PrintManager_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- TV13
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE TV13_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\TV13_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'TV13_data'  TO N'H:\UserDBdata\TV13_PreUpgrade_data.mdf'
+--, MOVE N'TV13_log'   TO N'H:\UserDBlog\TV13_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE TV13_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\TV13_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'TV13_data'  TO N'H:\UserDBdata\TV13_PreUpgrade_data.mdf'
+--, MOVE N'TV13_log'   TO N'H:\UserDBlog\TV13_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- TVAlert13
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE TVAlert13_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\TVAlert13_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'TVAlert13_data'  TO N'H:\UserDBdata\TVAlert13_PreUpgrade_data.mdf'
+--, MOVE N'TVAlert13_log'   TO N'H:\UserDBlog\TVAlert13_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE TVAlert13_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\TVAlert13_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'TVAlert13_data'  TO N'H:\UserDBdata\TVAlert13_PreUpgrade_data.mdf'
+--, MOVE N'TVAlert13_log'   TO N'H:\UserDBlog\TVAlert13_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- vCMSUpdate
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE vCMSUpdate_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\vCMSUpdate_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'vCMSUpdate_data'  TO N'H:\UserDBdata\vCMSUpdate_PreUpgrade_data.mdf'
+--, MOVE N'vCMSUpdate_log'   TO N'H:\UserDBlog\vCMSUpdate_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE vCMSUpdate_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\vCMSUpdate_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'vCMSUpdate_data'  TO N'H:\UserDBdata\vCMSUpdate_PreUpgrade_data.mdf'
+--, MOVE N'vCMSUpdate_log'   TO N'H:\UserDBlog\vCMSUpdate_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- ZipCodes
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE ZipCodes_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\ZipCodes_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'ZipCodes'  TO N'H:\UserDBdata\ZipCodes_PreUpgrade_data.mdf'
+--, MOVE N'ZipCodes_log'   TO N'H:\UserDBlog\ZipCodes_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE ZipCodes_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\ZipCodes_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'ZipCodes'  TO N'H:\UserDBdata\ZipCodes_PreUpgrade_data.mdf'
+--, MOVE N'ZipCodes_log'   TO N'H:\UserDBlog\ZipCodes_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO

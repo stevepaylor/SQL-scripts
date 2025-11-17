@@ -1,0 +1,127 @@
+*****************************************************************************************************
+**** CMKTCRYPTO
+*****************************************************************************************************
+1 SQL = ALTER USER CmktClientUser WITH LOGIN = CmktClientUser
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'CmktClientUser' not found. Check the name again.
+2 SQL = ALTER USER TblvUser WITH LOGIN = TblvUser
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'TblvUser' not found. Check the name again.
+3 SQL = ALTER USER PwinUser WITH LOGIN = PwinUser
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'PwinUser' not found. Check the name again.
+4 SQL = ALTER USER CmktRptUser WITH LOGIN = CmktRptUser
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'CmktRptUser' not found. Check the name again.
+5 SQL = ALTER USER cmpKiosk WITH LOGIN = cmpKiosk
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'cmpKiosk' not found. Check the name again.
+6 SQL = ALTER USER CmktUser WITH LOGIN = CmktUser
+7 SQL = ALTER USER EqdUser WITH LOGIN = EqdUser
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'EqdUser' not found. Check the name again.
+8 SQL = ALTER USER IVRUser WITH LOGIN = IVRUser
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'IVRUser' not found. Check the name again.
+9 SQL = ALTER USER SdsGw WITH LOGIN = SdsGw
+Msg 33017, Level 16, State 1, Line 3
+Cannot remap a user of one type to a login of a different type. For example, a SQL user must be mapped to a SQL login; it cannot be remapped to a Windows login.
+10 SQL = ALTER USER PosGw WITH LOGIN = PosGw
+Msg 33017, Level 16, State 1, Line 3
+Cannot remap a user of one type to a login of a different type. For example, a SQL user must be mapped to a SQL login; it cannot be remapped to a Windows login.
+11 SQL = ALTER USER TblvUser1 WITH LOGIN = TblvUser1
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'TblvUser1' not found. Check the name again.
+12 SQL = ALTER USER EpicGw WITH LOGIN = EpicGw
+Msg 33017, Level 16, State 1, Line 3
+Cannot remap a user of one type to a login of a different type. For example, a SQL user must be mapped to a SQL login; it cannot be remapped to a Windows login.
+13 SQL = ALTER USER TblvPMUser WITH LOGIN = TblvPMUser
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'TblvPMUser' not found. Check the name again.
+14 SQL = ALTER USER cmktClientUser1 WITH LOGIN = cmktClientUser1
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'cmktClientUser1' not found. Check the name again.
+15 SQL = ALTER USER JunketUser WITH LOGIN = JunketUser
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'JunketUser' not found. Check the name again.
+16 SQL = ALTER USER MicrosGw WITH LOGIN = MicrosGw
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'MicrosGw' not found. Check the name again.
+17 SQL = ALTER USER BCamelo WITH LOGIN = BCamelo
+Msg 33017, Level 16, State 1, Line 3
+Cannot remap a user of one type to a login of a different type. For example, a SQL user must be mapped to a SQL login; it cannot be remapped to a Windows login.
+18 SQL = ALTER USER install1212 WITH LOGIN = install1212
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'install1212' not found. Check the name again.
+
+
+*****************************************************************************************************
+**** CMKTDB_ARCHIVE
+*****************************************************************************************************
+
+NO orphans found
+
+*****************************************************************************************************
+**** CMP13
+*****************************************************************************************************
+
+NO orphans found
+
+
+*****************************************************************************************************
+**** CMPAPI
+*****************************************************************************************************
+
+1 SQL = ALTER USER cmpapi WITH LOGIN = cmpapi
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'cmpapi' not found. Check the name again.
+2 SQL = ALTER USER linkedserver WITH LOGIN = linkedserver
+Msg 15401, Level 16, State 2, Line 3
+Windows NT user or group 'linkedserver' not found. Check the name again.
+
+*****************************************************************************************************
+**** CMPSDS
+*****************************************************************************************************
+
+Found and fixed 1 orphan:  
+
+ALTER USER cmsupgrade WITH LOGIN = cmsupgrade
+
+
+*****************************************************************************************************
+**** dbInfogenesis
+*****************************************************************************************************
+
+Found and fixed 2 orphans:  
+
+ALTER USER cmktuser WITH LOGIN = cmktuser
+ALTER USER cmsupgrade WITH LOGIN = cmsupgrade
+
+
+*****************************************************************************************************
+**** PrintManager
+*****************************************************************************************************
+
+NO orphans found
+
+
+*****************************************************************************************************
+**** TV13
+*****************************************************************************************************
+
+Found and fixed 1 orphan: 
+
+ALTER USER cmsupgrade WITH LOGIN = cmsupgrade
+
+
+
+*****************************************************************************************************
+**** TVAlert13
+*****************************************************************************************************
+
+Found and fixed 1 orphan: 
+
+ALTER USER cmsupgrade WITH LOGIN = cmsupgrade
+
+
+

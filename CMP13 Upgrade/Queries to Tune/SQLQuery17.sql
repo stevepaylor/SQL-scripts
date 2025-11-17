@@ -1,0 +1,31 @@
+exec "CMP13"."dbo"."vGuest_spGetCompSuggestionsNEW";1 
+ @PrizeId=N'FPCCompCSR'
+,@LocnId=N'VJC-VBJC1'
+,@HostStatus=NULL
+,@NoFPCAmount=-1.00
+,@Games=N'BING,POKR,SLOT,TABL'
+,@Zones=N'C,E,F,G,H,I,J,K'
+,@CompAmts=N'50.00,100.00'
+,@ClubStates=N'40,50,51,60,61,70,71'
+,@ClubRanks=N'7,6,5,4,3,2,1'
+,@ClubStateNms=N'BRONZE,PREMIER,SILVER,ELITE,GOLD,MVP,PLATINUM'
+,@CompCutoffDt='2016-07-25 13:40:00'
+,@CompUpto=1
+,@TheoReinvestPercentToday=25
+,@TheoReinvestPercent30=25
+,@TheoReinvestPercent60=25
+,@TheoReinvestPercent90=0
+,@CasinoReinvestPercentToday=15
+,@CasinoReinvestPercent30=15
+,@CasinoReinvestPercent60=15
+,@CasinoReinvestPercent90=0
+,@SortingCriteria=N' TheorWinToday DESC, TheorWin30 DESC, TheorWin60 DESC, TheorWin90 DESC, CasinoWinToday DESC, CasinoWin30 DESC, CasinoWin60 DESC, CasinoWin90 DESC, ClubRank ASC'
+,@SortingFactorClubRank=1
+,@CalAvailableCompAmtSQL=N'1 = 2 OR value <= TheorAvailabilityToday OR value <= TheorAvailability30 OR value <= TheorAvailability60 OR value <= TheorAvailability90 OR value <= CasinoAvailabilityToday OR value <= CasinoAvailability30 OR value <= CasinoAvailability60 OR value <= CasinoAvailability90'
+,@ConfigTypeId=1
+,@AccountNo=-1
+,@AvailabilityPercent=50
+,@CompRefuseTagCode=N'PCPREFUSE'
+,@MaxRecord=5
+,@MaxRecordAnalysis=20
+,@IsDebug=0

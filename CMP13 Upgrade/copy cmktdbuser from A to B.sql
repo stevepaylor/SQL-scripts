@@ -1,0 +1,34 @@
+-- Login: cmktuser
+CREATE LOGIN [cmktuser] 
+  WITH PASSWORD=0x0200aece0c923f3dc3a743bda3eb07d1488f7795d39e714c1d34082658f43f5690ff3bbee2955955093d5096fb612595b0b8df9cdb84893efb001380ce332e02463744606040 HASHED
+, SID=0xe3f86046cfd9b2499225676b775b5c25
+, DEFAULT_DATABASE=[master]
+, DEFAULT_LANGUAGE=[us_english]
+, CHECK_EXPIRATION=OFF
+, CHECK_POLICY=OFF
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [cmktuser]
+GO
+
+ALTER SERVER ROLE [securityadmin] ADD MEMBER [cmktuser]
+GO
+
+ALTER SERVER ROLE [serveradmin] ADD MEMBER [cmktuser]
+GO
+
+ALTER SERVER ROLE [setupadmin] ADD MEMBER [cmktuser]
+GO
+
+ALTER SERVER ROLE [processadmin] ADD MEMBER [cmktuser]
+GO
+
+ALTER SERVER ROLE [diskadmin] ADD MEMBER [cmktuser]
+GO
+
+ALTER SERVER ROLE [dbcreator] ADD MEMBER [cmktuser]
+GO
+
+ALTER SERVER ROLE [bulkadmin] ADD MEMBER [cmktuser]
+GO
+

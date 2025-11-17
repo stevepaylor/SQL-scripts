@@ -1,0 +1,29 @@
+------------------------------------------------
+---- CMP13
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMP13_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMP13_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMKTDB13_Data'  TO N'H:\UserDBdata\CMP13_PreUpgrade_data.mdf'
+--, MOVE N'CMKTDB13_Data2' TO N'H:\UserDBdata\CMP13_PreUpgrade_data2.ndf'
+--, MOVE N'CMKTDB13_Log'   TO N'H:\UserDBlog\CMP13_PreUpgrade_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMP13_PreUpgrade
+--FROM DISK = N'J:\_PreUpgrade_Backups\CMP13_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMKTDB13_Data'  TO N'H:\UserDBdata\CMP13_PreUpgrade_data.mdf'
+--, MOVE N'CMKTDB13_Data2' TO N'H:\UserDBdata\CMP13_PreUpgrade_data2.ndf'
+--, MOVE N'CMKTDB13_Log'   TO N'H:\UserDBlog\CMP13_PreUpgrade_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO

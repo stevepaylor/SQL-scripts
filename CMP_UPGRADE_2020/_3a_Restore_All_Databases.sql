@@ -1,0 +1,345 @@
+------------------------------------------------
+---- CMKTCRYPTO
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMKTCRYPTO
+--FROM DISK = N'J:\_Backups\CMKTCRYPTO_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMKTCRYPTO'  TO N'K:\UserDBdata\CMKTCRYPTO_data.mdf'
+--, MOVE N'CMKTCRYPTO_Log'   TO N'L:\UserDBlog\CMKTCRYPTO_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMKTCRYPTO
+--FROM DISK = N'J:\_Backups\CMKTCRYPTO_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMKTCRYPTO'  TO N'K:\UserDBdata\CMKTCRYPTO_data.mdf'
+--, MOVE N'CMKTCRYPTO_Log'   TO N'L:\UserDBlog\CMKTCRYPTO_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+------------------------------------------------
+---- CMP_RATING
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMP_RATING
+--FROM DISK = N'J:\_Backups\CMP_RATING_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMP_RATING'  TO N'K:\UserDBdata\CMP_RATING_data.mdf'
+--, MOVE N'CMP_RATING_Log'   TO N'L:\UserDBlog\CMP_RATING_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMP_RATING
+--FROM DISK = N'J:\_Backups\CMP_RATING_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMP_RATING'  TO N'K:\UserDBdata\CMP_RATING_data.mdf'
+--, MOVE N'CMP_RATING_Log'   TO N'L:\UserDBlog\CMP_RATING_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+----------------------------------------------------
+-------- CMP13
+----------------------------------------------------
+------USE [master]
+------RESTORE DATABASE CMP13
+------FROM DISK = N'J:\_Backups\CMP13_FULL.bak' 
+------WITH  
+------  FILE = 1
+------, MOVE N'CMKTDB13_Data'  TO N'K:\UserDBdata\CMP13_data.mdf'
+------, MOVE N'CMKTDB13_Data2' TO N'K:\UserDBdata\CMP13_data2.ndf'
+------, MOVE N'CMKTDB13_Log'   TO N'L:\UserDBlog\CMP13_log.ldf'
+------, NOUNLOAD
+--------, REPLACE
+------, NORECOVERY
+------, STATS = 5
+------GO
+
+------USE [master]
+------RESTORE DATABASE CMP13
+------FROM DISK = N'J:\_Backups\CMP13_DIFF.bak' 
+------WITH  
+------  FILE = 1
+------, MOVE N'CMKTDB13_Data'  TO N'K:\UserDBdata\CMP13_data.mdf'
+------, MOVE N'CMKTDB13_Data2' TO N'K:\UserDBdata\CMP13_data2.ndf'
+------, MOVE N'CMKTDB13_Log'   TO N'L:\UserDBlog\CMP13_log.ldf'
+------, NOUNLOAD
+------, RECOVERY
+------, STATS = 5
+------GO
+
+------------------------------------------------
+---- CMPAPI
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMPAPI
+--FROM DISK = N'J:\_Backups\CMPAPI_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMPAPI'  TO N'K:\UserDBdata\CMPAPI_data.mdf'
+--, MOVE N'CMPAPI_Log'   TO N'L:\UserDBlog\CMPAPI_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMPAPI
+--FROM DISK = N'J:\_Backups\CMPAPI_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMPAPI'  TO N'K:\UserDBdata\CMPAPI_data.mdf'
+--, MOVE N'CMPAPI_Log'   TO N'L:\UserDBlog\CMPAPI_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+------------------------------------------------
+---- CMPSDS
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE CMPSDS
+--FROM DISK = N'J:\_Backups\CMPSDS_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMPSDS_data'  TO N'K:\UserDBdata\CMPSDS_data.mdf'
+--, MOVE N'CMPSDS_log'   TO N'L:\UserDBlog\CMPSDS_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE CMPSDS
+--FROM DISK = N'J:\_Backups\CMPSDS_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'CMPSDS_data'  TO N'K:\UserDBdata\CMPSDS_data.mdf'
+--, MOVE N'CMPSDS_log'   TO N'L:\UserDBlog\CMPSDS_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+------------------------------------------------
+---- dbInfogenesis
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE dbInfogenesis
+--FROM DISK = N'J:\_Backups\dbInfogenesis_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'dbInfogenesis_data'  TO N'K:\UserDBdata\dbInfogenesis_data.mdf'
+--, MOVE N'dbInfogenesis_log'   TO N'L:\UserDBlog\dbInfogenesis_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE dbInfogenesis
+--FROM DISK = N'J:\_Backups\dbInfogenesis_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'dbInfogenesis_data'  TO N'K:\UserDBdata\dbInfogenesis_data.mdf'
+--, MOVE N'dbInfogenesis_log'   TO N'L:\UserDBlog\dbInfogenesis_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+------------------------------------------------
+---- PKMS_OBJ
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE PKMS_OBJ
+--FROM DISK = N'J:\_Backups\PKMS_OBJ_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'PKMS_OBJ'  TO N'K:\UserDBdata\PKMS_OBJ_data.mdf'
+--, MOVE N'PKMS_OBJ_log'   TO N'L:\UserDBlog\PKMS_OBJ_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE PKMS_OBJ
+--FROM DISK = N'J:\_Backups\PKMS_OBJ_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'PKMS_OBJ'  TO N'K:\UserDBdata\PKMS_OBJ_data.mdf'
+--, MOVE N'PKMS_OBJ_log'   TO N'L:\UserDBlog\PKMS_OBJ_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- PrintManager
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE PrintManager
+--FROM DISK = N'J:\_Backups\PrintManager_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'PrintManager_data'  TO N'K:\UserDBdata\PrintManager_data.mdf'
+--, MOVE N'PrintManager_log'   TO N'L:\UserDBlog\PrintManager_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE PrintManager
+--FROM DISK = N'J:\_Backups\PrintManager_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'PrintManager_data'  TO N'K:\UserDBdata\PrintManager_data.mdf'
+--, MOVE N'PrintManager_log'   TO N'L:\UserDBlog\PrintManager_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- TV13
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE TV13
+--FROM DISK = N'J:\_Backups\TV13_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'TV13_data'  TO N'K:\UserDBdata\TV13_data.mdf'
+--, MOVE N'TV13_log'   TO N'L:\UserDBlog\TV13_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE TV13
+--FROM DISK = N'J:\_Backups\TV13_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'TV13_data'  TO N'K:\UserDBdata\TV13_data.mdf'
+--, MOVE N'TV13_log'   TO N'L:\UserDBlog\TV13_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- TVAlert13
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE TVAlert13
+--FROM DISK = N'J:\_Backups\TVAlert13_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'TVAlert13_data'  TO N'K:\UserDBdata\TVAlert13_data.mdf'
+--, MOVE N'TVAlert13_log'   TO N'L:\UserDBlog\TVAlert13_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE TVAlert13
+--FROM DISK = N'J:\_Backups\TVAlert13_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'TVAlert13_data'  TO N'K:\UserDBdata\TVAlert13_data.mdf'
+--, MOVE N'TVAlert13_log'   TO N'L:\UserDBlog\TVAlert13_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- vCMSUpdate
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE vCMSUpdate
+--FROM DISK = N'J:\_Backups\vCMSUpdate_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'vCMSUpdate_data'  TO N'K:\UserDBdata\vCMSUpdate_data.mdf'
+--, MOVE N'vCMSUpdate_log'   TO N'L:\UserDBlog\vCMSUpdate_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE vCMSUpdate
+--FROM DISK = N'J:\_Backups\vCMSUpdate_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'vCMSUpdate_data'  TO N'K:\UserDBdata\vCMSUpdate_data.mdf'
+--, MOVE N'vCMSUpdate_log'   TO N'L:\UserDBlog\vCMSUpdate_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
+
+
+----------------------------------------------
+---- ZipCodes
+------------------------------------------------
+--USE [master]
+--RESTORE DATABASE ZipCodes
+--FROM DISK = N'J:\_Backups\ZipCodes_FULL.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'ZipCodes'  TO N'K:\UserDBdata\ZipCodes_data.mdf'
+--, MOVE N'ZipCodes_log'   TO N'L:\UserDBlog\ZipCodes_log.ldf'
+--, NOUNLOAD
+----, REPLACE
+--, NORECOVERY
+--, STATS = 5
+--GO
+
+--USE [master]
+--RESTORE DATABASE ZipCodes
+--FROM DISK = N'J:\_Backups\ZipCodes_DIFF.bak' 
+--WITH  
+--  FILE = 1
+--, MOVE N'ZipCodes'  TO N'K:\UserDBdata\ZipCodes_data.mdf'
+--, MOVE N'ZipCodes_log'   TO N'L:\UserDBlog\ZipCodes_log.ldf'
+--, NOUNLOAD
+--, RECOVERY
+--, STATS = 5
+--GO
