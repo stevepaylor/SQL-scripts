@@ -1,0 +1,1 @@
+EXECUTE DBA.[dbo].[DatabaseBackup] @Databases = 'CRManalytics', @Directory = N'\\DBAMBK01PR\SQLBackup01', @BackupType = 'FULL', @CleanupTime = 180, @BackupSoftware = NULL, @Compress  = 'Y', @CopyOnly = 'N', @Verify = 'N', @CheckSum = 'Y', @BufferCount = NULL, @MaxTransferSize = NULL, @BlockSize = NULL, @LogToTable = 'Y'

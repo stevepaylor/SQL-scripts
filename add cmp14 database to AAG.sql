@@ -1,0 +1,214 @@
+--- YOU MUST EXECUTE THE FOLLOWING SCRIPT IN SQLCMD MODE.
+:Connect CMKTDB13Apr
+
+USE [master]
+GO
+
+ALTER AVAILABILITY GROUP [CMKTAG13pr]
+REMOVE DATABASE [CMP14];
+GO
+
+:Connect CMKTDB13Bpr
+
+EXEC msdb.dbo.sp_delete_database_backuphistory @database_name = N'CMP14'
+GO
+USE [master]
+GO
+
+DROP DATABASE [CMP14]
+GO
+
+:Connect CMKTDB13Cpr
+
+EXEC msdb.dbo.sp_delete_database_backuphistory @database_name = N'CMP14'
+GO
+USE [master]
+GO
+
+DROP DATABASE [CMP14]
+GO
+
+--:Connect CMKTDB13Dpr
+
+--EXEC msdb.dbo.sp_delete_database_backuphistory @database_name = N'CMP14'
+--GO
+--USE [master]
+--GO
+
+--DROP DATABASE [CMP14]
+--GO
+
+:Connect CMKTDB13Apr
+
+USE [master]
+
+GO
+
+ALTER AVAILABILITY GROUP [CMKTAG13pr]
+ADD DATABASE [CMP14];
+
+GO
+
+:Connect CMKTDB13Apr
+
+BACKUP DATABASE [CMP14] TO  DISK = N'\\CMKTDB13BPR\SQLBackup\CMP14.bak' WITH  COPY_ONLY, FORMAT, INIT, SKIP, REWIND, NOUNLOAD, COMPRESSION,  STATS = 5
+
+GO
+
+:Connect CMKTDB13BPR
+
+RESTORE DATABASE [CMP14] FROM  DISK = N'\\CMKTDB13BPR\SQLBackup\CMP14.bak' WITH  NORECOVERY,  NOUNLOAD,  STATS = 5
+
+GO
+
+:Connect CMKTDB13CPR
+
+RESTORE DATABASE [CMP14] FROM  DISK = N'\\CMKTDB13BPR\SQLBackup\CMP14.bak' WITH  NORECOVERY,  NOUNLOAD,  STATS = 5
+
+GO
+
+:Connect CMKTDB13DPR
+
+RESTORE DATABASE [CMP14] FROM  DISK = N'\\CMKTDB13BPR\SQLBackup\CMP14.bak' WITH  NORECOVERY,  NOUNLOAD,  STATS = 5
+
+GO
+
+:Connect CMKTDB13Apr
+
+BACKUP LOG [CMP14] TO  DISK = N'\\CMKTDB13BPR\SQLBackup\CMP14_20190725213039.trn' WITH NOFORMAT, NOINIT, NOSKIP, REWIND, NOUNLOAD, COMPRESSION,  STATS = 5
+
+GO
+
+:Connect CMKTDB13BPR
+
+RESTORE LOG [CMP14] FROM  DISK = N'\\CMKTDB13BPR\SQLBackup\CMP14_20190725213039.trn' WITH  NORECOVERY,  NOUNLOAD,  STATS = 5
+
+GO
+
+:Connect CMKTDB13BPR
+
+
+-- Wait for the replica to start communicating
+begin try
+declare @conn bit
+declare @count int
+declare @replica_id uniqueidentifier 
+declare @group_id uniqueidentifier
+set @conn = 0
+set @count = 30 -- wait for 5 minutes 
+
+if (serverproperty('IsHadrEnabled') = 1)
+	and (isnull((select member_state from master.sys.dm_hadr_cluster_members where upper(member_name COLLATE Latin1_General_CI_AS) = upper(cast(serverproperty('ComputerNamePhysicalNetBIOS') as nvarchar(256)) COLLATE Latin1_General_CI_AS)), 0) <> 0)
+	and (isnull((select state from master.sys.database_mirroring_endpoints), 1) = 0)
+begin
+    select @group_id = ags.group_id from master.sys.availability_groups as ags where name = N'CMKTAG13pr'
+	select @replica_id = replicas.replica_id from master.sys.availability_replicas as replicas where upper(replicas.replica_server_name COLLATE Latin1_General_CI_AS) = upper(@@SERVERNAME COLLATE Latin1_General_CI_AS) and group_id = @group_id
+	while @conn <> 1 and @count > 0
+	begin
+		set @conn = isnull((select connected_state from master.sys.dm_hadr_availability_replica_states as states where states.replica_id = @replica_id), 1)
+		if @conn = 1
+		begin
+			-- exit loop when the replica is connected, or if the query cannot find the replica status
+			break
+		end
+		waitfor delay '00:00:10'
+		set @count = @count - 1
+	end
+end
+end try
+begin catch
+	-- If the wait loop fails, do not stop execution of the alter database statement
+end catch
+ALTER DATABASE [CMP14] SET HADR AVAILABILITY GROUP = [CMKTAG13pr];
+
+GO
+
+:Connect CMKTDB13CPR
+
+RESTORE LOG [CMP14] FROM  DISK = N'\\CMKTDB13BPR\SQLBackup\CMP14_20190725213039.trn' WITH  NORECOVERY,  NOUNLOAD,  STATS = 5
+
+GO
+
+:Connect CMKTDB13CPR
+
+
+-- Wait for the replica to start communicating
+begin try
+declare @conn bit
+declare @count int
+declare @replica_id uniqueidentifier 
+declare @group_id uniqueidentifier
+set @conn = 0
+set @count = 30 -- wait for 5 minutes 
+
+if (serverproperty('IsHadrEnabled') = 1)
+	and (isnull((select member_state from master.sys.dm_hadr_cluster_members where upper(member_name COLLATE Latin1_General_CI_AS) = upper(cast(serverproperty('ComputerNamePhysicalNetBIOS') as nvarchar(256)) COLLATE Latin1_General_CI_AS)), 0) <> 0)
+	and (isnull((select state from master.sys.database_mirroring_endpoints), 1) = 0)
+begin
+    select @group_id = ags.group_id from master.sys.availability_groups as ags where name = N'CMKTAG13pr'
+	select @replica_id = replicas.replica_id from master.sys.availability_replicas as replicas where upper(replicas.replica_server_name COLLATE Latin1_General_CI_AS) = upper(@@SERVERNAME COLLATE Latin1_General_CI_AS) and group_id = @group_id
+	while @conn <> 1 and @count > 0
+	begin
+		set @conn = isnull((select connected_state from master.sys.dm_hadr_availability_replica_states as states where states.replica_id = @replica_id), 1)
+		if @conn = 1
+		begin
+			-- exit loop when the replica is connected, or if the query cannot find the replica status
+			break
+		end
+		waitfor delay '00:00:10'
+		set @count = @count - 1
+	end
+end
+end try
+begin catch
+	-- If the wait loop fails, do not stop execution of the alter database statement
+end catch
+ALTER DATABASE [CMP14] SET HADR AVAILABILITY GROUP = [CMKTAG13pr];
+
+GO
+
+:Connect CMKTDB13DPR
+
+RESTORE LOG [CMP14] FROM  DISK = N'\\CMKTDB13BPR\SQLBackup\CMP14_20190725213039.trn' WITH  NORECOVERY,  NOUNLOAD,  STATS = 5
+
+GO
+
+:Connect CMKTDB13DPR
+
+
+-- Wait for the replica to start communicating
+begin try
+declare @conn bit
+declare @count int
+declare @replica_id uniqueidentifier 
+declare @group_id uniqueidentifier
+set @conn = 0
+set @count = 30 -- wait for 5 minutes 
+
+if (serverproperty('IsHadrEnabled') = 1)
+	and (isnull((select member_state from master.sys.dm_hadr_cluster_members where upper(member_name COLLATE Latin1_General_CI_AS) = upper(cast(serverproperty('ComputerNamePhysicalNetBIOS') as nvarchar(256)) COLLATE Latin1_General_CI_AS)), 0) <> 0)
+	and (isnull((select state from master.sys.database_mirroring_endpoints), 1) = 0)
+begin
+    select @group_id = ags.group_id from master.sys.availability_groups as ags where name = N'CMKTAG13pr'
+	select @replica_id = replicas.replica_id from master.sys.availability_replicas as replicas where upper(replicas.replica_server_name COLLATE Latin1_General_CI_AS) = upper(@@SERVERNAME COLLATE Latin1_General_CI_AS) and group_id = @group_id
+	while @conn <> 1 and @count > 0
+	begin
+		set @conn = isnull((select connected_state from master.sys.dm_hadr_availability_replica_states as states where states.replica_id = @replica_id), 1)
+		if @conn = 1
+		begin
+			-- exit loop when the replica is connected, or if the query cannot find the replica status
+			break
+		end
+		waitfor delay '00:00:10'
+		set @count = @count - 1
+	end
+end
+end try
+begin catch
+	-- If the wait loop fails, do not stop execution of the alter database statement
+end catch
+ALTER DATABASE [CMP14] SET HADR AVAILABILITY GROUP = [CMKTAG13pr];
+
+GO
+
+
