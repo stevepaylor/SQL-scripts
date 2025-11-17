@@ -1,0 +1,126 @@
+﻿<deadlock>
+  <victim-list>
+    <victimProcess id="process1f19024928" />
+  </victim-list>
+  <process-list>
+    <process id="process1f19024928" taskpriority="0" logused="9148" waitresource="OBJECT: 7:1137439126:2 " waittime="5224" ownerId="3870918279" transactionname="user_transaction" lasttranstarted="2022-09-01T09:50:33.297" XDES="0x4dd1dbb6a8" lockMode="IX" schedulerid="3" kpid="9692" status="suspended" spid="137" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2022-09-01T09:50:33.303" lastbatchcompleted="2022-09-01T09:50:33.297" lastattention="1900-01-01T00:00:00.297" clientapp=".Net SqlClient Data Provider" hostname="CMKTAP07PR" hostpid="10396" loginname="cmktuser" isolationlevel="read uncommitted (1)" xactid="3870918279" currentdb="7" lockTimeout="4294967295" clientoption1="671088672" clientoption2="128056">
+      <executionStack>
+        <frame procname="CMP13.dbo.SPSDSPENDINGINSERT" line="46" stmtstart="2468" stmtend="6682" sqlhandle="0x0300070078884123f25404012ba6000001000000000000000000000000000000000000000000000000000000">
+INSERT INTO [dbo].[tSdsPending]
+           ([TranId]
+           ,[TransCodeId]
+           ,[TransDateTime]
+           ,[TransactionId]
+           ,[PlayerId]
+           ,[SdsMsgType]
+           ,[SlotNumber]
+           ,[Stand]
+           ,[SlotIndex]
+           ,[CardNumber]
+           ,[EncryptedPIN]
+           ,[AmountRequested]
+           ,[AccountType]
+           ,[Authentication]
+           ,[CompUsed]
+           ,[Promo1Used]
+           ,[AuthAward]
+           ,[RedeemPts]
+           --,[RedeemPartialPts]
+           ,[NonCashableAmt]
+           ,[CashableAmt]
+           ,[MachineAcceptNonCashableAmt]
+           ,[MachineAcceptCashableAmt]
+           ,[Flags]
+           ,[IsCommitted]
+           ,[ErrorCode]
+           ,[LogDtm]
+           ,[SDSCommitDtm]
+           ,[CMktCommitDtm]
+           --,[CommittedClearedEmpID]
+           --,[CommittedClearedLocnID]
+           --,[CommittedClearedDtm]
+           ,[CreatedDtm]
+           ,[CreatedBy]
+           ,[ModifiedDtm]    </frame>
+      </executionStack>
+      <inputbuf>
+Proc [Database Id = 7 Object Id = 591497336]   </inputbuf>
+    </process>
+    <process id="process1f1992d0c8" taskpriority="0" logused="10000" waittime="4264" schedulerid="20" kpid="17480" status="suspended" spid="332" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2022-09-01T09:50:31.287" lastbatchcompleted="2022-09-01T09:50:31.287" lastattention="1900-01-01T00:00:00.287" clientapp=".Net SqlClient Data Provider" hostname="CMKTAP08PR" hostpid="9616" loginname="cmktuser" isolationlevel="read uncommitted (1)" xactid="3870875268" currentdb="7" lockTimeout="4294967295" clientoption1="671088672" clientoption2="128056">
+      <executionStack>
+        <frame procname="CMP13.dbo.spMergePlayerTransaction" line="74" stmtstart="6988" stmtend="7164" sqlhandle="0x03000700288c2c45b38a04012ba6000001000000000000000000000000000000000000000000000000000000">
+Update tAccumQueue set PlayerId = @DestinationPlayerId Where PlayerID = @SourcePlayerId    </frame>
+        <frame procname="CMP13.dbo.spMergePlayerUpdateTables" line="479" stmtstart="33420" stmtend="34478" sqlhandle="0x03000700bfb98310c86a5d0022ae000001000000000000000000000000000000000000000000000000000000">
+exec spMergePlayerTransaction
+	@SourcePlayerId =@SourcePlayerId,
+	@SourceAcct =@SourceAcct,
+	@DestinationPlayerId =@DestinationPlayerId,
+	@DestinationAcct =@DestinationAcct,
+	@EmpId =@EmpId,
+	@IsCtrWatch =@IsCtrWatch,
+    @IsCreditHold =@IsCreditHold,
+    @IsFixedLimitAcct =@IsFixedLimitAcct,
+	@PlayerNoteIds =@PlayerNoteIds,
+	@PlayerMemoIds =@PlayerMemoIds,
+	@CasinoId = @CasinoId
+
+----exec spMergePlayerUpdateFIFOTables
+----	@SourcePlayerId =@SourcePlayerId,
+----	@DestinationPlayerId =@DestinationPlayerId    </frame>
+      </executionStack>
+      <inputbuf>
+Proc [Database Id = 7 Object Id = 277068223]   </inputbuf>
+    </process>
+    <process id="process48564b4188" taskpriority="0" logused="177720" waitresource="PAGE: 7:1:77237416 " waittime="4264" ownerId="3870875268" transactionname="user_transaction" lasttranstarted="2022-09-01T09:50:31.287" XDES="0x3905d1d470" lockMode="U" schedulerid="16" kpid="6084" status="suspended" spid="332" sbid="0" ecid="6" priority="0" trancount="0" lastbatchstarted="2022-09-01T09:50:31.287" lastbatchcompleted="2022-09-01T09:50:31.287" lastattention="1900-01-01T00:00:00.287" clientapp=".Net SqlClient Data Provider" hostname="CMKTAP08PR" hostpid="9616" isolationlevel="read uncommitted (1)" xactid="3870875268" currentdb="7" lockTimeout="4294967295" clientoption1="671088672" clientoption2="128056">
+      <executionStack>
+        <frame procname="CMP13.dbo.spMergePlayerTransaction" line="74" stmtstart="6988" stmtend="7164" sqlhandle="0x03000700288c2c45b38a04012ba6000001000000000000000000000000000000000000000000000000000000">
+Update tAccumQueue set PlayerId = @DestinationPlayerId Where PlayerID = @SourcePlayerId    </frame>
+        <frame procname="CMP13.dbo.spMergePlayerUpdateTables" line="479" stmtstart="33420" stmtend="34478" sqlhandle="0x03000700bfb98310c86a5d0022ae000001000000000000000000000000000000000000000000000000000000">
+exec spMergePlayerTransaction
+	@SourcePlayerId =@SourcePlayerId,
+	@SourceAcct =@SourceAcct,
+	@DestinationPlayerId =@DestinationPlayerId,
+	@DestinationAcct =@DestinationAcct,
+	@EmpId =@EmpId,
+	@IsCtrWatch =@IsCtrWatch,
+    @IsCreditHold =@IsCreditHold,
+    @IsFixedLimitAcct =@IsFixedLimitAcct,
+	@PlayerNoteIds =@PlayerNoteIds,
+	@PlayerMemoIds =@PlayerMemoIds,
+	@CasinoId = @CasinoId
+
+----exec spMergePlayerUpdateFIFOTables
+----	@SourcePlayerId =@SourcePlayerId,
+----	@DestinationPlayerId =@DestinationPlayerId    </frame>
+      </executionStack>
+      <inputbuf>
+Proc [Database Id = 7 Object Id = 277068223]   </inputbuf>
+    </process>
+  </process-list>
+  <resource-list>
+    <objectlock lockPartition="2" objid="1137439126" subresource="FULL" dbid="7" objectname="CMP13.dbo.tSdsPending" id="lockd60d4cd00" mode="X" associatedObjectId="1137439126">
+      <owner-list>
+        <owner id="process1f1992d0c8" mode="X" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="process1f19024928" mode="IX" requestType="wait" />
+      </waiter-list>
+    </objectlock>
+    <exchangeEvent id="Pipe22a886a80" WaitType="e_waitPipeGetRow" nodeId="1">
+      <owner-list>
+        <owner id="process48564b4188" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="process1f1992d0c8" />
+      </waiter-list>
+    </exchangeEvent>
+    <pagelock fileid="1" pageid="77237416" dbid="7" subresource="FULL" objectname="CMP13.dbo.tAccumQueue" id="lock1601b71400" mode="IX" associatedObjectId="72057597503864832">
+      <owner-list>
+        <owner id="process1f19024928" mode="IX" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="process48564b4188" mode="U" requestType="wait" />
+      </waiter-list>
+    </pagelock>
+  </resource-list>
+</deadlock>
