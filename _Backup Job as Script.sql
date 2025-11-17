@@ -1,0 +1,1 @@
+EXECUTE dba.[dbo].[DatabaseBackup] @Databases = 'PKMS, DBA', @Directory = N'\\DBAMBK01PR\SQLBackup04_NONPROD', @BackupType = 'FULL', @CleanupTime = 180, @BackupSoftware = NULL, @Compress  = 'Y', @CopyOnly = 'N', @Verify = 'N', @CheckSum = 'Y', @BufferCount = 512, @MaxTransferSize = 262144, @BlockSize = 8192, @LogToTable = 'Y'
