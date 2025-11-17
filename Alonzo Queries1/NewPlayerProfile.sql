@@ -1,0 +1,122 @@
+
+
+--Current Reinvestment Value & Reinvestment Percentage
+select
+sum(([award_FPawarded_Total] - [award_FPawarded_PromoWinner]) + [award_CompsUsed_Other] + [award_CompsUsed_FB] + [award_PromoChipsAwarded] + [award_CashAwarded_Bingo]) ReinvestmentValue, 
+sum(([award_FPawarded_Total] - [award_FPawarded_PromoWinner]) + [award_CompsUsed_Other] + [award_CompsUsed_FB] + [award_PromoChipsAwarded] + [award_CashAwarded_Bingo]) / sum(daily_worth) ReinvestnmentPercent
+from
+tableau.player_daily_fact p 
+where p.gaming_date between 
+
+(select DateRangeStart_3monthLGD  from tableau.player_dim pd where player_account_number='10040340')
+
+AND 
+
+(select pd.DateRangeEnd_3monthLGD  from tableau.player_dim pd where player_account_number='10040340')
+
+and p.player_account_number='10040340'
+
+
+-- To get dates
+--select DateRangeStart_3monthLGD  from tableau.player_dim pd where player_account_number='10040340'
+--select pd.DateRangeEnd_3monthLGD  from tableau.player_dim pd where player_account_number='10040340'
+
+SELECT
+pd.player_phone,
+pd.player_id PlayerID,
+pd.player_adt_category,
+pd.player_account_number Acct,
+pd.player_display_name DisplayName,
+pd.player_birthdate DOB,
+pd.player_age Age,
+pd.player_email Email,
+pd.player_club_level Tier,
+pd.player_city City, 
+pd.player_State State,
+pd.player_country Country,
+pd.player_zip ZipCode,
+pd.player_isnomail NoMail,
+pd.player_isclubhold ClubHold,
+pd.player_isbanned Banned,
+pd.player_host Host,
+pd.visits_3monthLGD,
+sum(([award_FPawarded_Total] - [award_FPawarded_PromoWinner]) + [award_CompsUsed_Other] + [award_CompsUsed_FB] + [award_PromoChipsAwarded] + [award_CashAwarded_Bingo]) ReinvestmentValue, 
+sum(([award_FPawarded_Total] - [award_FPawarded_PromoWinner]) + [award_CompsUsed_Other] + [award_CompsUsed_FB] + [award_PromoChipsAwarded] + [award_CashAwarded_Bingo]) / sum(daily_worth) ReinvestnmentPercent,
+case when pd.Total_Theo_3monthLGD >= pd.NetActualWin_3monthLGD THEN pd.Total_Theo_3monthLGD ELSE pd.NetActualWin_3monthLGD END * .15 CompWorth,
+pd.ADW_NetFP_3monthLGD ,
+pd.ADP_3MonthLGD ,
+pd.AMV_3monthLGD,
+pd.AMW_NetFP_3MonthLGD,
+pd.AMP_3monthLGD,
+pd.PlayerType_3monthLGD PlayerType,
+pd.visits_3month,
+pd.visits_6month,
+pd.visits_12month,
+pd.player_last_trip_date 
+FROM [tableau].[player_dim] pd
+JOIN tableau.player_daily_fact p on p.player_account_number = pd.player_account_number AND p.gaming_date between 
+
+(select DateRangeStart_3monthLGD  from tableau.player_dim pd where player_account_number=@acct)
+
+AND 
+
+(select pd.DateRangeEnd_3monthLGD  from tableau.player_dim pd where player_account_number=@acct)
+
+
+Where 
+pd.player_account_number <> 0  
+and pd.player_account_number=@acct
+
+GROUP BY pd.player_id,
+pd.player_account_number,
+pd.Player_First_name,
+pd.Player_last_name,
+pd.player_display_name,
+pd.player_birthdate,
+pd.player_age,
+pd.player_email,
+pd.player_club_level,
+pd.player_Address1,
+pd.player_Address2,
+pd.player_city, 
+pd.player_State,
+pd.player_country,
+pd.player_zip,
+pd.player_geo_distance,
+pd.player_geo_distance_category,
+pd.player_isnomail,
+pd.player_isinactive,
+pd.player_isclubhold,
+pd.player_isbanned,
+pd.player_host,
+pd.FP_3monthLGD,
+pd.worth_Gross_3monthLGD,
+pd.visits_3monthLGD,
+pd.ADW_NetFP_3monthLGD,
+pd.AMP_3monthLGD,
+pd.ADP_3MonthLGD,
+pd.AMV_3monthLGD,
+pd.AMW_NetFP_3MonthLGD,
+pd.PlayerType_3monthLGD,
+pd.visits_3month,
+pd.visits_6month,
+pd.visits_12month,
+pd.playerlastdate_3monthLGD, 
+pd.Total_Theo_3monthLGD,
+pd.NetActualWin_3monthLGD,
+pd.player_adt_category,
+pd.player_phone,
+CASE WHEN pd.ADW_NETFP_3MONTHLGD >= 425 OR pd.AMW_NetFP_3monthLGD >= 4250 THEN 'A'
+WHEN pd.ADW_NETFP_3MONTHLGD >= 300 OR pd.AMW_NetFP_3monthLGD >= 3500 THEN 'B'
+WHEN pd.ADW_NETFP_3MONTHLGD >= 200 OR pd.AMW_NetFP_3monthLGD >= 2500 THEN 'C'
+WHEN pd.ADW_NETFP_3MONTHLGD >= 150 OR pd.AMW_NetFP_3monthLGD >= 2000 THEN 'D'
+WHEN pd.ADW_NETFP_3MONTHLGD >= 125 OR pd.AMW_NetFP_3monthLGD >= 1500 THEN 'E'
+WHEN pd.ADW_NETFP_3MONTHLGD >= 100 OR pd.AMW_NetFP_3monthLGD >= 1250 THEN 'F'
+WHEN pd.ADW_NETFP_3MONTHLGD >= 80 OR pd.AMW_NetFP_3monthLGD >= 1000 THEN 'G'
+WHEN pd.ADW_NETFP_3MONTHLGD >= 60 OR pd.AMW_NetFP_3monthLGD >= 750 THEN 'H'
+ELSE 'I'END
+
+---
+
+select top 100 * from [tableau].[player_dim] 
+where player_account_number='10192100'

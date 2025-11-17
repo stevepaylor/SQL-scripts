@@ -1,0 +1,45 @@
+10862481
+
+
+
+(Select max(gamingdt) as LastContacted from cmktdb13cpr.cmp13.dbo.tplayernote where ref1 like 'Contacted%' and IsVoid=0 and playerid=vp.playerid) as LastContacted,
+
+
+
+
+		(Select Max(LastContacted) as LastContacted from
+			(
+			Select max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), PostDtm)) as LastContacted from tplayernote with(nolock) where ref1 like 'Contacted%' and IsVoid=0 and playerid=tp1.playerid
+			UNION ALL
+			Select max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), PostDtm)) as LastContacted from tawards with(nolock) where prizeid=10174235 and IsVoid=0 and playerid=tp1.playerid
+			) as t) as LastContacted
+
+
+
+
+		(Select Max(LastContacted) as LastContacted from
+			(
+			Select max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), PostDtm)) as LastContacted from CMKTDB13CPR.CMP13.dbo.tplayernote with(nolock) where ref1 like 'Contacted%' and IsVoid=0 and playerid=tp1.playerid
+			UNION ALL
+			Select max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), PostDtm)) as LastContacted from CMKTDB13CPR.CMP13.dbo.tawards with(nolock) where prizeid=10174235 and IsVoid=0 and playerid=tp1.playerid
+			) as t) as LastContacted,
+
+
+
+
+(Select Max(LastContacted) as LastContacted from
+			(
+			Select max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), PostDtm)) as LastContacted from CMKTDB13CPR.CMP13.dbo.tplayernote with(nolock) where ref1 like 'Contacted%' and IsVoid=0 and playerid=vp.playerid
+			UNION ALL
+			Select max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), PostDtm)) as LastContacted from CMKTDB13CPR.CMP13.dbo.tawards with(nolock) where prizeid=10174235 and IsVoid=0 and playerid=vp.playerid
+			) as t) as LastContacted,
+
+
+
+_TableGamesLeadership <_TableGamesLeadership@VIEJAS.com>
+_SlotServiceManagers <SlotServiceManagers@VIEJAS.com>
+_BingoManagementTeam bingomanagementteam@viejas.com
+_ExecutiveHost <_ExecutiveHost@VIEJAS.com>
+_VIPHost _VIPHost@VIEJAS.com
+
+_TableGamesLeadership@VIEJAS.com;SlotServiceManagers@VIEJAS.com;bingomanagementteam@viejas.com;_ExecutiveHost@VIEJAS.com;_VIPHost@VIEJAS.com
