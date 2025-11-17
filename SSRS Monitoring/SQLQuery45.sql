@@ -1,0 +1,1 @@
+exec msdb.dbo.sp_start_job @job_name = '37468D27-F0A6-4AF5-8D38-7178B2EF58D0' -- Dummy Report - Used to test if SSRS is running
