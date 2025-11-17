@@ -1,0 +1,2 @@
+DBCC INDEXDEFRAG (DBA, WhoIsBlocking) --WITH NO_INFOMSGS   
+

@@ -1,0 +1,1 @@
+SELECT name, state FROM sys.databases WHERE name LIKE 'CCM%'
