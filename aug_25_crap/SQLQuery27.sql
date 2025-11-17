@@ -1,0 +1,2 @@
+SELECT ordinal_position, column_name, data_type, udt_name
+FROM OPENQUERY(Stay_PostgreSQL,'SELECT * FROM information_schema.columns WHERE table_schema = ''public''   AND table_name   = ''ledger_transactions''');

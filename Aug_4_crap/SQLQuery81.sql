@@ -1,0 +1,17 @@
+SELECT TOP (1000) [Reservation_ID]
+      ,[Account_ID]
+      ,[Confirmation_Code]
+      ,[Acct]
+      ,[Display_Date]
+      ,[Room_Rev]
+      ,[Room_Comp]
+      ,[Food_Rev]
+      ,[Food_Comp]
+      ,[Misc_Rev]
+      ,[Misc_Comp]
+      ,[Tier_Discount]
+      ,[Total_Rev]
+      ,[Total_Comp]
+  FROM [StayDWH].[dbo].[vw_Stay_Rev]
+
+  order by [Display_Date] desc

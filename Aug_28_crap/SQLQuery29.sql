@@ -1,0 +1,18 @@
+SELECT [id]
+      ,[tenant_id]
+      ,[create_time]
+      ,[update_time]
+      ,[archived]
+      ,[external_profile_id]
+      ,[website]
+      ,[code]
+      ,[name]
+      ,[pronounced]
+      ,[merge_remnant]
+      ,[Local_ETL_Inserted_TS]
+      ,[Local_ETL_Updated_TS]
+      ,[local_ETL_RowHash]
+
+  FROM [StayDWH].[dbo].[companies_snapshot]
+
+DELETE TOP (80) FROM [StayDWH].[dbo].[companies_snapshot]
