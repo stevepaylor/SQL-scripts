@@ -1,0 +1,37 @@
+INSERT INTO [iQ-Gaming].[player].[tab_aggregate_3month]
+SELECT[PLAYER_KEY]
+      ,[DateRangeStart]
+      ,[DateRangeEnd]
+      ,[playerfirstdate]
+      ,[playerlastdate]
+      ,[Slot_Theo]
+      ,[Table_Theo]
+      ,[Bingo_Theo]
+      ,[Total_Theo]
+      ,[worth_Gross]
+      ,[visits]
+      ,[FP]
+      ,[ADT_GrossFP]
+      ,[ADW_GrossFP]
+      ,[AMV]
+      ,[AMT_GrossFP]
+      ,[AMW_Gross]
+      ,[NetTheo]
+      ,[NetActualWin]
+      ,[ADT_NetFP]
+      ,[ADW_NetFP]
+      ,[ADP]
+      ,[AMT_NetFP]
+      ,[AMW_NetFP]
+      ,[AMP]
+      ,[ADW_NetFP_Category]
+      ,[AMW_NetFP_Category]
+      ,[PlayerType]
+FROM [MSBIDB02DV].[vDW].[player].[tab_aggregate_3month]
+
+WHERE PLAYER_KEY IN (SELECT PLAYER_KEY FROM ##aggregate_3month_PLAYER_KEYs_vDW_Only
+
+
+
+DELETE FROM [iQ-Gaming].[player].[tab_aggregate_3month]
+WHERE PLAYER_KEY IN (SELECT PLAYER_KEY FROM ##aggregate_3month_PLAYER_KEYs_DWH_Only)

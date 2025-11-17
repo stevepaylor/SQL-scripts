@@ -1,0 +1,2 @@
+ALTER SCHEMA Deprecated
+TRANSFER dbo.Repl_ETL_Table_RowCount_Keys_Validation_Driver ;
